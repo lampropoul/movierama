@@ -37,7 +37,7 @@ public class Movie {
             name = "vote",
             joinColumns = {@JoinColumn(name = "movie_id")},
             inverseJoinColumns = {@JoinColumn(name = "user_id")})
-    private Set<User> users = new HashSet<>();
+    private Set<User> userVoted = new HashSet<>();
 
     public int getId() {
         return id;
@@ -79,7 +79,7 @@ public class Movie {
         this.user = user;
     }
 
-    public Set<User> getUsers() {
-        return users;
+    public Set<User> getUserVoted() {
+        return userVoted;
     }
 }

@@ -39,7 +39,11 @@ public class User {
             name = "vote",
             joinColumns = {@JoinColumn(name = "user_id")},
             inverseJoinColumns = {@JoinColumn(name = "movie_id")})
-    Set<Movie> movies = new HashSet<>();
+    private Set<Movie> moviesVoted = new HashSet<>();
+
+    @Transient
+    @ManyToOne(targetEntity = Movie.class)
+    private Set<Movie> moviesAdded = new HashSet<>();
 
     public int getId() {
         return id;
@@ -89,7 +93,11 @@ public class User {
         this.password = password;
     }
 
-    public Set<Movie> getMovies() {
-        return movies;
+    public Set<Movie> getMoviesVoted() {
+        return moviesVoted;
+    }
+
+    public Set<Movie> getMoviesAdded() {
+        return moviesAdded;
     }
 }

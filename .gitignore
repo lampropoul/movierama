@@ -15,3 +15,5 @@ buildNumber.properties
 
 .idea/
 movierama.iml
+
+*.log

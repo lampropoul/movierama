@@ -5,12 +5,12 @@ import javax.persistence.*;
 @Entity
 @Table(name = "vote")
 @SecondaryTables({
-            @SecondaryTable(name = "movie"), @SecondaryTable(name = "user")
+        @SecondaryTable(name = "movie"), @SecondaryTable(name = "user")
 })
 public class Vote {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
 

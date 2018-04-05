@@ -1,0 +1,28 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+<p th:text="'Movie Page'"/>
+
+<form action="#" th:action="@{/movie/new}" th:object="${movie}" method="post">
+    <label>title</label>
+    <input type="text" id="title" name="title" th:field="*{title}"/>
+    <br>
+
+    <label>description</label>
+    <input type="text" id="description" name="description" th:field="*{description}"/>
+    <br>
+
+    <label>date</label>
+    <input type="date" id="date" name="date" th:field="*{date}"/>
+    <br>
+
+    <button type="submit">Add movie</button>
+
+</form>
+
+</body>
+</html>

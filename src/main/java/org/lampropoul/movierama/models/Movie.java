@@ -12,7 +12,7 @@ import java.util.Set;
 public class Movie {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
 
@@ -24,13 +24,11 @@ public class Movie {
     @NotEmpty(message = "Provide description")
     private String description;
 
-    @Column
-    @NotEmpty(message = "Provide date")
+    @Column(name = "date_published")
     private Date date;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "added_by", referencedColumnName = "id", table = "user", nullable = false)
-    private User user;
+    @Column(name = "added_by")
+    private int addedBy;
 
     @Transient
     @JoinTable(
@@ -71,12 +69,12 @@ public class Movie {
         this.date = date;
     }
 
-    public User getUser() {
-        return user;
+    public int getAddedBy() {
+        return addedBy;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setAddedBy(int addedBy) {
+        this.addedBy = addedBy;
     }
 
     public Set<User> getUserVoted() {

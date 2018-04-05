@@ -20,7 +20,7 @@ public class MovieService {
         return movieRepository.findByTitle(title);
     }
 
-    public void saveMovie(Movie movie) {
-        movieRepository.save(movie);
+    public Movie saveMovie(Movie movie) {
+        return movieRepository.save(movie);
     }
 }

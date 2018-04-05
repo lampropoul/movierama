@@ -5,7 +5,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "vote")
 @SecondaryTables({
-        @SecondaryTable(name = "movie"), @SecondaryTable(name = "user")
+            @SecondaryTable(name = "movie"), @SecondaryTable(name = "user")
 })
 public class Vote {
 

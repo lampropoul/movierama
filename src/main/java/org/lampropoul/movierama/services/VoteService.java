@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
+import java.util.Set;
+
 @Service("voteService")
 public class VoteService {
 
@@ -25,6 +27,14 @@ public class VoteService {
 
     public Vote findByUser(User user) {
         return voteRepository.findByUser(user);
+    }
+
+    public Set<User> findAllByMovie(Movie movie) {
+        return voteRepository.findAllByMovie(movie);
+    }
+
+    public Set<Movie> findAllByUser(User user) {
+        return voteRepository.findAllByUser(user);
     }
 
     public void saveVote(Vote vote) {

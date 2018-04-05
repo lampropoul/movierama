@@ -3,9 +3,12 @@ package org.lampropoul.movierama.models;
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import java.sql.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "movie")
+@SecondaryTable(name = "user")
 public class Movie {
 
     @Id
@@ -24,6 +27,17 @@ public class Movie {
     @Column
     @NotEmpty(message = "Provide date")
     private Date date;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "added_by", referencedColumnName = "id", table = "user", nullable = false)
+    private User user;
+
+    @Transient
+    @JoinTable(
+            name = "vote",
+            joinColumns = {@JoinColumn(name = "movie_id")},
+            inverseJoinColumns = {@JoinColumn(name = "user_id")})
+    private Set<User> users = new HashSet<>();
 
     public int getId() {
         return id;
@@ -55,5 +69,17 @@ public class Movie {
 
     public void setDate(Date date) {
         this.date = date;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public Set<User> getUsers() {
+        return users;
     }
 }

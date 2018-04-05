@@ -2,6 +2,8 @@ package org.lampropoul.movierama.models;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "user")
@@ -31,6 +33,13 @@ public class User {
     @Column
     @NotEmpty(message = "Provide password")
     private String password;
+
+    @Transient
+    @JoinTable(
+            name = "vote",
+            joinColumns = {@JoinColumn(name = "user_id")},
+            inverseJoinColumns = {@JoinColumn(name = "movie_id")})
+    Set<Movie> movies = new HashSet<>();
 
     public int getId() {
         return id;
@@ -78,5 +87,9 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public Set<Movie> getMovies() {
+        return movies;
     }
 }

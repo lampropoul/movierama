@@ -1,5 +1,6 @@
 package org.lampropoul.movierama.controllers;
 
+import org.lampropoul.movierama.models.User;
 import org.lampropoul.movierama.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,7 +24,7 @@ public class RegisterController {
     }
 
     @PostMapping("/register")
-    public String register(@RequestBody String requestBody) {
-        return "index";
+    public User register(@RequestBody String requestBody) {
+        return new User();
     }
 }

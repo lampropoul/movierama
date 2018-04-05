@@ -1,5 +1,6 @@
 package org.lampropoul.movierama.controllers;
 
+import com.google.gson.Gson;
 import org.lampropoul.movierama.models.User;
 import org.lampropoul.movierama.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +26,7 @@ public class RegisterController {
 
     @PostMapping("/register")
     public User register(@RequestBody String requestBody) {
-        return new User();
+        User user = new Gson().fromJson(requestBody, User.class);
+        return userService.saveUser(user);
     }
 }

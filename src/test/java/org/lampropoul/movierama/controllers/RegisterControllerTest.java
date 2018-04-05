@@ -13,6 +13,8 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.ui.Model;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.jws.soap.SOAPBinding;
 
@@ -36,23 +38,12 @@ public class RegisterControllerTest {
     }
 
     @Test
-    public void shouldRenderRegistrationPage() {
-        registerController = new RegisterController(userService);
-        String page = registerController.renderRegistrationPage();
-        if ("register".equals(page)) {
-            assert true;
-            return;
-        }
-        assert false;
-    }
-
-    @Test
     public void shouldSaveUserToDatabase() {
         registerController = new RegisterController(userService);
         User user = new User();
         user.setUsername("vlamp");
         Mockito
-                .when(registerController.register(new Gson().toJson(user)))
+                .when(registerController.register(user))
                 .thenReturn(user);
         Assert.assertEquals(user.getUsername(), "vlamp");
     }

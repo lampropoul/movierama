@@ -1,6 +1,5 @@
 package org.lampropoul.movierama.controllers;
 
-import org.lampropoul.movierama.services.UserService;
 import org.lampropoul.movierama.services.VoteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

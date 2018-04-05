@@ -1,7 +1,5 @@
 package org.lampropoul.movierama.controllers;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -13,10 +11,6 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.ui.Model;
-import org.springframework.web.servlet.ModelAndView;
-
-import javax.jws.soap.SOAPBinding;
 
 import static org.mockito.Mockito.mock;
 
